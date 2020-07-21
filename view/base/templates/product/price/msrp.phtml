@@ -6,7 +6,9 @@ $product = $block->getSaleableItem();
 $productId = $product->getId();
 
 $amount = $block->getMsrpPriceCalculator()->getMsrpPriceValue($product);
+$finalAmount = $block->getPriceType('final_price')->getValue();
 
+if ($finalAmount < $amount):
 $msrpPrice = $block->renderAmount(
     $priceType->getCustomAmount($amount),
     [
@@ -20,4 +22,5 @@ $msrpPrice = $block->renderAmount(
 <?php if ($amount) : ?>
     <span class="old-price map-old-price"><?= /* @noEscape */ $msrpPrice ?></span>
     <span class="map-fallback-price normal-price"><?= /* @noEscape */ $msrpPrice ?></span>
+<?php endif; ?>
 <?php endif; ?>
