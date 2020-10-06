@@ -6,7 +6,7 @@ $product = $block->getSaleableItem();
 $productId = $product->getId();
 
 $amount = $block->getMsrpPriceCalculator()->getMsrpPriceValue($product);
-$finalAmount = $block->getPriceType('final_price')->getValue();
+$finalAmount = $block->getPriceType('regular_price')->getValue();
 
 if ($finalAmount < $amount):
 $msrpPrice = $block->renderAmount(
